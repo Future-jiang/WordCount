@@ -1,24 +1,24 @@
 #include<stdio.h>
 #include<string.h>
-int GetWordNumber(char string[]);   //è®¡ç®—å•è¯æ•°é‡
-int GetCharNumber(char string[]);   //è®¡ç®—å­—ç¬¦æ•°é‡
+int GetWordNumber(char string[]);   //¼ÆËãµ¥´ÊÊıÁ¿
+int GetCharNumber(char string[]);   //¼ÆËã×Ö·ûÊıÁ¿
 int main(int argc ,char *argv[])
 {
 	char buff[256];
 	char string[10000] = "\0";
 	FILE *fp = NULL;
-	int sum = 0;       //æœ€ç»ˆç»“æœ
+	int sum = 0;       ////×îÖÕ½á¹û
 	fp = fopen(argv[2],"r");
 	//fp = fopen("test.txt","r");
 	if(fp == NULL)
 	{
-		printf("æ–‡ä»¶è¯»å–å¤±è´¥\n");
+		printf("ÎÄ¼ş¶ÁÈ¡Ê§°Ü\n");
 		return -1;
 	}
 	while(!feof(fp))
 	{
 		if(fgets(buff,255,fp) != NULL)
-		{ //scanfé‡åˆ°ç©ºæ ¼å°±ä¼šæ–­å¼€ï¼Œgetsä¼šè¯»å–ç©ºæ ¼ï¼Œé‡åˆ°æ¢è¡Œå°±ç»“æŸ
+		{ //scanfÓöµ½¿Õ¸ñ¾Í»á¶Ï¿ª£¬gets»á¶ÁÈ¡¿Õ¸ñ£¬Óöµ½»»ĞĞ¾Í½áÊø
 			strcat(string,buff);
 		}
 	} 
@@ -32,30 +32,30 @@ int main(int argc ,char *argv[])
 		if(strcmp(argv[1],"-v") == 0)
 		{
 			sum = GetWordNumber(buff);
-			printf("å•è¯æ•°ï¼š %d\n",sum);
+			printf("µ¥´ÊÊı£º %d\n",sum);
 		}
 		else if(strcmp(argv[1],"-c") == 0)
 		{
 			sum = GetCharNumber(buff);
-			printf("å­—ç¬¦æ•°ï¼š %d\n",sum);
+			printf("×Ö·ûÊı£º %d\n",sum);
 		}
 	}
 }
 int GetWordNumber(char string[])
 {
 	int i, in_word, word_num;
-    word_num = 0;                // åˆå§‹åŒ–å•è¯ä¸ªæ•°ä¸º0
-    in_word = 0;                 // æ ‡è®°ä½ï¼Œæ ‡è®°æ˜¯å¦åœ¨å•è¯å†…
+    word_num = 0;                // ³õÊ¼»¯µ¥´Ê¸öÊıÎª0
+    in_word = 0;                 // ±ê¼ÇÎ»£¬±ê¼ÇÊÇ·ñÔÚµ¥´ÊÄÚ
     for (i = 0; string[i]; i++) 
     {
         if (string[i] == ' ') 
-        { // æ£€æµ‹åˆ°ç©ºæ ¼
-            	in_word = 0;        // è®¾ç½®æ ‡è®°ä½ä¸ºä¸åœ¨å•è¯å†…
+        { // ¼ì²âµ½¿Õ¸ñ
+            	in_word = 0;        // ÉèÖÃ±ê¼ÇÎ»Îª²»ÔÚµ¥´ÊÄÚ
         } 
         else if (in_word == 0) 
-        { // åœ¨å•è¯å†…
-            	word_num++;              // ç»Ÿè®¡å•è¯ä¸ªæ•°
-            	in_word = 1;          // è®¾ç½®æ ‡è®°ä½ä¸ºåœ¨å•è¯å†…
+        { // ÔÚµ¥´ÊÄÚ
+            	word_num++;              // Í³¼Æµ¥´Ê¸öÊı
+            	in_word = 1;          // ÉèÖÃ±ê¼ÇÎ»ÎªÔÚµ¥´ÊÄÚ
 		}
 	}
     return word_num;
@@ -73,3 +73,4 @@ int GetCharNumber(char string[])
 	}
 	return sum ;
 }
+
